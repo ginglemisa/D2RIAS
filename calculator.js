@@ -1,6 +1,7 @@
 
 import { container, select, number, checkbox, option, button, skill as speed, other, debug, tv, char, wf, skills, wt, ic } from './constants.js'
 import * as constants from './constants.js'
+import { zh } from "./constants.js";
 
 window.addEventListener("load", load, false);
 
@@ -416,7 +417,13 @@ function load() {
 		clear(select.PRIMARY_WEAPON);
 		for (const weapon of constants.weaponsMap.values()) {
 			if (canBeEquipped(weapon, false)) {
-				select.PRIMARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]"));
+				//select.PRIMARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]")); 中文翻譯修改02
+
+const option = document.createElement("option");
+option.value = weapon.name; // 保持內部ID英文
+option.text = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
+select.PRIMARY_WEAPON.add(option);
+
 				if (previousValueName == weapon.name) reselect = true;
 			}
 		}
@@ -429,14 +436,21 @@ function load() {
 
 	function setSecondaryWeapons() {
 		let previousValue = select.SECONDARY_WEAPON.value;
-		let previousValueName = previousValue.substring(0, previousValue.indexOf(" ["));
+		//let previousValueName = previousValue.substring(0, previousValue.indexOf(" [")); 中文翻譯修改處
+		let previousValueName = previousValue;
+
 		let reselect = false;
 		clear(select.SECONDARY_WEAPON);
 		if (character == char.BARBARIAN || character == char.FRENZY_BARBARIAN) {
 			for (const weapon of constants.weaponsMap.values()) {
 				if ((weapon.type.isOneHand && weapon.type != wt.CLAW) || (character == char.BARBARIAN && weapon.type == wt.TWO_HANDED_SWORD)) {
 					if (canBeEquipped(weapon, true)) {
-						select.SECONDARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]"));
+						//select.SECONDARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]"));中文翻譯修改處
+						const option = document.createElement("option");
+option.value = weapon.name;
+option.text = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
+select.SECONDARY_WEAPON.add(option);
+
 						if (previousValueName == weapon.name) reselect = true;
 					}
 				}
@@ -444,7 +458,12 @@ function load() {
 		} else if (character == char.ASSASSIN) {
 			for (const weapon of constants.weaponsMap.values()) {
 				if (canBeEquipped(weapon, true)) {
-					select.SECONDARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]"));
+					//select.SECONDARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]")); 中文翻譯修改處
+const option = document.createElement("option");
+option.value = weapon.name;
+option.text = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
+select.SECONDARY_WEAPON.add(option);
+
 					if (previousValueName == weapon.name) reselect = true;
 				}
 			}
@@ -606,7 +625,17 @@ function load() {
 
 		}
 
-		currentSkills.forEach(s => select.SKILL.add(createOption(s == "divider" ? s : s.name)));
+		//currentSkills.forEach(s => select.SKILL.add(createOption(s == "divider" ? s : s.name))); 中文翻譯修改處01
+		currentSkills.forEach(s => {
+    		if (s == "divider") {
+        		select.SKILL.add(createOption(s));
+    		} else {
+        	const option = document.createElement("option");
+        	option.value = s.name; // 內部ID維持英文
+        	option.text = zh.skill.get(s.name) ?? s.name; // 顯示中文
+        	select.SKILL.add(option);
+    		}
+		});
 
 		if (!currentSkills.includes(skill)) {
 			onSkillChange(false);
