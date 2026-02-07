@@ -51,8 +51,8 @@
     <div id="tableVariableContainer">
       <label for="tableVariableSelect">表格：</label>
       <select id="tableVariableSelect">
-        <option value=0>EIAS</option>
-        <option value=1 selected>IAS</option>
+        <option value=0>有效攻速（EIAS）</option>
+        <option value=1 selected>裝備攻速（IAS）</option>
         <option value=2>狂熱（Fanaticism）</option>
         <option value=3 style="display: none">主手武器 IAS（Primary Weapon IAS）</option>
         <option value=4 style="display: none">副手武器 IAS（Secondary Weapon IAS）</option>
@@ -64,7 +64,7 @@
       <br>
     </div>
     <div id="primaryWeaponContainer" style="display: initial">
-      <label for="primaryWeaponSelect" title="Primary Weapon, Gloves-side" class="hoverable">P Weapon:</label>
+      <label for="primaryWeaponSelect" title="Primary Weapon, Gloves-side" class="hoverable">主手武器：</label>
       <select id="primaryWeaponSelect"></select>
       <br>
     </div>
@@ -73,7 +73,7 @@
       <br>
     </div>
     <div id="primaryWeaponIASContainer" style="display: none">
-      <label for="primaryWeaponIAS">主手 WIAS：</label>
+      <label for="primaryWeaponIAS">主武攻速 WIAS：</label>
       <input type="number" id="primaryWeaponIAS" value="0" min="0" max="120">
       <br>
     </div>
@@ -83,12 +83,12 @@
       <br>
     </div>
     <div id="secondaryWeaponIASContainer" style="display: none">
-      <label for="secondaryWeaponIAS">副手 WIAS：</label>
+      <label for="secondaryWeaponIAS">副武攻速 WIAS：</label>
       <input type="number" id="secondaryWeaponIAS" value="0" min="0" max="120">
       <br>
     </div>
     <div id="IASContainer" style="display: none">
-      <label for="IAS">IAS:</label>
+      <label for="IAS">裝備攻速（IAS）：</label>
       <input type="number" id="IAS" value="0" min="0">
       <br>
     </div>
@@ -98,7 +98,7 @@
       <br>
     </div>
     <div id="burstOfSpeedContainer">
-      <label for="burstOfSpeedLevel" title="Hustle grants BoS to all classes" class="hoverable">Burst of Speed:</label>
+      <label for="burstOfSpeedLevel" title="Hustle grants BoS to all classes" class="hoverable">速度爆發（Burst of Speed）：</label>
       <input type="number" id="burstOfSpeedLevel" value="0" min="0" max="60">
       <br>
     </div>
@@ -143,7 +143,18 @@
     <button type="button" id="generateLink">複製連結</button>
   </div>
   <div id="tableContainer" class="halfWindow"></div>
+  <div style="margin-top:20px; padding:12px; border:2px solid #e0b44c; border-radius:6px; color:#f5f5f5;">
+  <p><strong style="color:#2b8cff;">裝備攻速（IAS）</strong>為裝備上的攻速百分比，會經遞減換算後影響幀數；
+     <strong style="color:#ff5a5a;">有效攻速（EIAS）</strong>為遊戲實際用來判定攻擊斷點的等效速度值。</p>
+
+  <p><strong style="color:#19c37d;">技能/狀態攻速（SIAS）</strong>（如狂熱靈氣、速度爆發、狼人變化、狂亂連擊、槌擊、熊之印記）
+     會直接加到有效速度中；<strong style="color:#c77dff;">武器基礎速度（WSM）</strong>則以加減值影響最終 EIAS。</p>
+
+  <p style="color:#ffb020;">衰老、神聖冰凍、冰冷與緩速等效果會以負向方式影響 EIAS，進而改變攻擊斷點。</p>
+</div>
+
 </body>
 </html>
+
 
 
