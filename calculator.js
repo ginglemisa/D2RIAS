@@ -420,8 +420,9 @@ function load() {
 				//select.PRIMARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]")); 中文翻譯修改02
 
 const option = document.createElement("option");
-option.value = weapon.name; // 保持內部ID英文
-option.text = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
+option.value = weapon.name + " [" + weapon.WSM + "]";
+option.text  = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
+
 select.PRIMARY_WEAPON.add(option);
 
 				if (previousValueName == weapon.name) reselect = true;
@@ -447,8 +448,8 @@ select.PRIMARY_WEAPON.add(option);
 					if (canBeEquipped(weapon, true)) {
 						//select.SECONDARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]"));中文翻譯修改處
 						const option = document.createElement("option");
-option.value = weapon.name;
-option.text = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
+option.value = weapon.name + " [" + weapon.WSM + "]";
+option.text  = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
 select.SECONDARY_WEAPON.add(option);
 
 						if (previousValueName == weapon.name) reselect = true;
@@ -460,8 +461,8 @@ select.SECONDARY_WEAPON.add(option);
 				if (canBeEquipped(weapon, true)) {
 					//select.SECONDARY_WEAPON.add(createOption(weapon.name + " [" + weapon.WSM + "]")); 中文翻譯修改處
 const option = document.createElement("option");
-option.value = weapon.name;
-option.text = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
+option.value = weapon.name + " [" + weapon.WSM + "]";
+option.text  = (zh.weapon.get(weapon.name) ?? weapon.name) + " [" + weapon.WSM + "]";
 select.SECONDARY_WEAPON.add(option);
 
 					if (previousValueName == weapon.name) reselect = true;
@@ -1525,4 +1526,5 @@ function addTableHeader(table, variableLabel) {
 
 	table.appendChild(tableRow);
 }
+
 
