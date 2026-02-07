@@ -661,7 +661,7 @@ select.SECONDARY_WEAPON.add(option);
 		removeAllChildNodes(container.TABLE);
 
 		if (wereform != wf.HUMAN && isSecondWeaponSet() && skill == skills.STANDARD) {
-			displayTableInfo("Using Standard Attack while dual wielding in a wereform will not let you attack after your first successful attack until you swap weapons, remorph, or enter and exit town. Currently bugged in D2R.");
+			displayTableInfo("在變身型態（Wereform）下雙持使用普通攻擊（Standard Attack）時，第一次成功命中後，你可能會無法繼續攻擊，直到你切換武器、重新變身，或進出城鎮為止。這是 D2R 目前已知的 Bug。");
 			//return;
 		}
 
@@ -943,27 +943,27 @@ select.SECONDARY_WEAPON.add(option);
 	function preinfo() {
 
 		if (wereform != wf.HUMAN) {
-			displayTableInfo("All Wereform skills have undergone basic testing and should be correct.");
+			displayTableInfo("所有變身型態（Wereform）的技能都做過基本測試，結果應該是正確的。");
 		} else if (character == char.FRENZY_BARBARIAN) {
-			displayTableInfo("No testing has been done for " + skill.name + " yet for the Act 5 Mercenary. It's extremely likely correct, though.");
+			displayTableInfo("Act 5 傭兵的 " + skill.name + " 目前尚未做過實測。不過它極有可能是正確的。");
 		}
 
 		if (skill == skills.KICK) {
-			displayTableInfo("Kicking barrels/etc. Tested, should be correct based on given information, except for in Wereform, not tested.");
+			displayTableInfo("踢桶子／踢物件等行為：已實測；依據現有資料推論應該正確。但在變身型態（Wereform）下尚未測試。");
 		} else if (skill == skills.DODGE) {
-			displayTableInfo("Dodge/Avoid/Evade. Tested, should be correct based on given information.");
+			displayTableInfo("閃避／迴避／躲避（Dodge/Avoid/Evade）：已實測；依據現有資料推論應該正確。");
 		} else if (skill == skills.WHIRLWIND) {
 			if (isSecondWeaponSet()) {
-				displayTableInfo("Whirlwind is correct in all tested scenarios. The third table is the table that both weapons swing at ingame, it's a combination of the first two tables. This table is calculated too simply and doesn't consider combinations of frames more than 1 frame apart (ie 4 + 6) so you'll need to combine manually in those cases.");
+				displayTableInfo("旋風斬在所有已測試的情境下都是正確的。第三個表格是遊戲中雙武器實際揮擊時使用的表格，它是前兩個表格的合併結果。不過這個合併表的計算方式較為簡化，沒有考慮相差超過 1 frame 的組合（例如 4 + 6），因此在這種情況下需要自行手動判讀。");
 			} else {
-				displayTableInfo("Whirlwind is correct in all tested scenarios.");
+				displayTableInfo("旋風斬在所有已測試的情境下都是正確的。");
 			}
 		} else if (skill == skills.FRENZY) {
-			displayTableInfo("With the dual wield attack speed changes in 2.4, Frenzy got an unintentional minor buff.");
+			displayTableInfo("由於 2.4 版對雙持攻速的改動，狂亂連擊（Frenzy）意外獲得了一點小幅增強。");
 		} else if (skill == skills.IMPALE) {
-			displayTableInfo("Impale should be correct based on modifications in the files. No testing was made, though.");
+			displayTableInfo("刺穿（Impale）依據檔案中的改動推論應該正確，但尚未做過實測。");
 		} else if (skill == skills.STRAFE && primaryWeapon.type == wt.CROSSBOW) {
-			displayTableInfo("The first table is Strafing an even amount of arrows with a Crossbow, the second table is Strafing an odd amount of arrows with a Crossbow.");
+			displayTableInfo("第一張表格是使用弩（Crossbow）掃射「偶數」箭矢時的攻速；第二張表格是使用弩掃射「奇數」箭矢時的攻速。");
 		}
 
 	}
@@ -1526,5 +1526,6 @@ function addTableHeader(table, variableLabel) {
 
 	table.appendChild(tableRow);
 }
+
 
 
