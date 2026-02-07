@@ -1,63 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <script defer type="module" src="calculator.js"></script>
   <link href="styles.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <title>D2 IAS Calculator</title>
+  <title>D2R 攻速計算機</title>
 </head>
 <body>
   <h3>v1.1.2</h3>
-  <p>Last updated for: D2R v2.6 PTR</p>
-  <p>Primarily developed by Warren1001 from Llama's community. You can contact me <a href="https://discord.gg/mrllamasc">on his Discord server</a> or DM me directly on Discord (Warren1001).</p>
-  <p><a href="https://github.com/Warren1001/IAS_Calculator/tree/master">This calculator is open source</a>. <a href="https://github.com/Warren1001/IAS_Calculator/issues">Report a bug if you find one</a>. <a href="https://github.com/Warren1001/IAS_Calculator/blob/master/README.md">Changelog</a></p>
-  <p>Every time you visit this page for the first time, or you see mention of me updating this version, please full refresh with CTRL + F5.</p>
-  <p>This calculator is meant to show you everything possible in-game. If there is a combination in this calculator that is not possible in-game OR there is a combination missing that is possible in-game, please report it as a bug.</p>
+  <p>最後更新對應版本：D2R v2.6 PTR</p>
+  <p>本工具主要由 Llama 社群的 Warren1001 開發。你可以在 <a href="https://discord.gg/mrllamasc">MrLlamaSC 的 Discord 伺服器</a> 聯絡我，或直接在 Discord 私訊我（Warren1001）。</p>
+  <p><a href="https://github.com/Warren1001/IAS_Calculator/tree/master">本計算機為開源專案</a>。<a href="https://github.com/Warren1001/IAS_Calculator/issues">如果你發現問題請回報 Bug</a>。<a href="https://github.com/Warren1001/IAS_Calculator/blob/master/README.md">更新紀錄（Changelog）</a></p>
+  <p>每次你第一次造訪本頁，或看到我更新版本的公告時，請使用 CTRL + F5 進行完整重新整理。</p>
+  <p>本計算機目標為呈現遊戲內「所有可能」的組合。如果你在這裡看到一個遊戲內不可能的組合，或發現少了某個遊戲內其實可行的組合，請回報為 Bug。</p>
+  <p>此為台灣巴哈姆特網站使用者 reggietsai 於2026年2月發布的繁體中文版本，有任何bug可至巴哈姆特找我。</p>
+  <p><a href="https://1drv.ms/i/c/1367f0676ea76755/IQAQbUSA03ZRRJY0LbppAQ--AUl_UozqlvRfJxE-g-k-Xks">本網站翻譯已經獲得原作者授權</a></p>
   <br>
   <div id="calculator" class="halfWindow">
-    <label for="characterSelect">Character:</label>
+    <label for="characterSelect">職業：</label>
     <select id="characterSelect">
-      <option value=0 selected>Amazon</option>
-      <option value=1>Assassin</option>
-      <option value=2>Barbarian</option>
-      <option value=3>Druid</option>
-      <option value=4>Necromancer</option>
-      <option value=5>Paladin</option>
-      <option value=6>Sorceress</option>
+      <option value=0 selected>亞馬遜（Amazon）</option>
+      <option value=1>刺客（Assassin）</option>
+      <option value=2>野蠻人（Barbarian）</option>
+      <option value=3>德魯伊（Druid）</option>
+      <option value=4>死靈法師（Necromancer）</option>
+      <option value=5>聖騎士（Paladin）</option>
+      <option value=6>魔法使（Sorceress）</option>
       <option disabled>───────────</option>
-      <option value=7>Rogue Scout</option>
-      <option value=8>Desert Mercenary</option>
-      <option value=9>Bash Barbarian</option>
-      <option value=10>Frenzy Barbarian</option>
+      <option value=7>俠盜（Rogue Scout）</option>
+      <option value=8>沙漠傭兵（Desert Mercenary）</option>
+      <option value=9>猛擊單劍野蠻人（Bash Barbarian）</option>
+      <option value=10>狂亂連擊雙刀野蠻人（Frenzy Barbarian）</option>
     </select>
     <br>
     <div id="wereformContainer" style="display: initial">
-      <label for="wereformSelect">Wereform:</label>
+      <label for="wereformSelect">變形術：</label>
       <select id="wereformSelect">
-        <option value=0 selected>None</option>
-        <option value=1>Werebear</option>
-        <option value=2>Werewolf</option>
+        <option value=0 selected>無（None）</option>
+        <option value=1>熊人變化（Werebear）</option>
+        <option value=2>狼人變化（Werewolf）</option>
         <!--<option value=2 style="display: none">Werewolf</option> TODO holiday event-->
       </select>
       <br>
     </div>
-    <label for="skillSelect">Skill:</label>
+    <label for="skillSelect">技能：</label>
     <select id="skillSelect"></select>
     <br>
     <div id="tableVariableContainer">
-      <label for="tableVariableSelect">Table:</label>
+      <label for="tableVariableSelect">表格：</label>
       <select id="tableVariableSelect">
         <option value=0>EIAS</option>
         <option value=1 selected>IAS</option>
-        <option value=2>Fanaticism</option>
-        <option value=3 style="display: none">Primary Weapon IAS</option>
-        <option value=4 style="display: none">Secondary Weapon IAS</option>
-        <option value=5 style="display: none">Burst of Speed</option>
-        <option value=6 style="display: none">Werewolf</option>
-        <option value=7 style="display: none">Frenzy</option>
-        <option value=8 style="display: none">Maul</option>
+        <option value=2>狂熱（Fanaticism）</option>
+        <option value=3 style="display: none">主手武器 IAS（Primary Weapon IAS）</option>
+        <option value=4 style="display: none">副手武器 IAS（Secondary Weapon IAS）</option>
+        <option value=5 style="display: none">速度爆發（Burst of Speed）</option>
+        <option value=6 style="display: none">狼人變化（Werewolf）</option>
+        <option value=7 style="display: none">狂亂連擊（Frenzy）</option>
+        <option value=8 style="display: none">槌擊（Maul）</option>
       </select>
       <br>
     </div>
@@ -67,21 +69,21 @@
       <br>
     </div>
     <div id="isOneHandedContainer" style="display: none">
-      <input type="checkbox" id="isOneHanded">Is One-Handed
+      <input type="checkbox" id="isOneHanded">單手武器
       <br>
     </div>
     <div id="primaryWeaponIASContainer" style="display: none">
-      <label for="primaryWeaponIAS">Primary WIAS:</label>
+      <label for="primaryWeaponIAS">主手 WIAS：</label>
       <input type="number" id="primaryWeaponIAS" value="0" min="0" max="120">
       <br>
     </div>
     <div id="secondaryWeaponContainer" style="display: none">
-      <label for="secondaryWeaponSelect" title="Secondary Weapon, Boots-side" class="hoverable">S Weapon:</label>
+      <label for="secondaryWeaponSelect" title="Secondary Weapon, Boots-side" class="hoverable">副手武器：</label>
       <select id="secondaryWeaponSelect"></select>
       <br>
     </div>
     <div id="secondaryWeaponIASContainer" style="display: none">
-      <label for="secondaryWeaponIAS">Secondary WIAS:</label>
+      <label for="secondaryWeaponIAS">副手 WIAS：</label>
       <input type="number" id="secondaryWeaponIAS" value="0" min="0" max="120">
       <br>
     </div>
@@ -91,7 +93,7 @@
       <br>
     </div>
     <div id="fanaticismContainer">
-      <label for="fanaticismLevel">Fanaticism:</label>
+      <label for="fanaticismLevel">狂熱（Fanaticism）：</label>
       <input type="number" id="fanaticismLevel" value="0" min="0" max="60">
       <br>
     </div>
@@ -101,45 +103,46 @@
       <br>
     </div>
     <div id="werewolfContainer" style="display: none">
-      <label for="werewolfLevel">Werewolf:</label>
+      <label for="werewolfLevel">狼人變化（Werewolf）：</label>
       <input type="number" id="werewolfLevel" value="0" min="0" max="60">
       <br>
     </div>
     <div id="maulContainer" style="display: none">
-      <label for="maulLevel">Maul:</label>
+      <label for="maulLevel">槌擊（Maul）：</label>
       <input type="number" id="maulLevel" value="0" min="0" max="60">
       <br>
     </div>
     <div id="frenzyContainer" style="display: none">
-      <label for="frenzyLevel">Frenzy:</label>
+      <label for="frenzyLevel">狂亂連擊（Frenzy）：</label>
       <input type="number" id="frenzyLevel" value="0" min="0" max="60">
       <br>
     </div>
     <div id="markOfBearContainer">
       <input type="checkbox" id="markOfBear" title="Metamorphosis grants Mark of the Bear (25 EIAS) to Werebear" class="hoverable">
-      <label for="markOfBear" title="Metamorphosis grants Mark of the Bear (25 EIAS) to Werebear" class="hoverable">Mark of the Bear</label>
+      <label for="markOfBear" title="Metamorphosis grants Mark of the Bear (25 EIAS) to Werebear" class="hoverable">熊之印記（Mark of the Bear）</label>
       <br>
     </div>
     <div id="holyFreezeContainer">
-      <label for="holyFreezeLevel">Holy Freeze:</label>
+      <label for="holyFreezeLevel">神聖冰凍（Holy Freeze）：</label>
       <input type="number" id="holyFreezeLevel" value="0" min="0" max="60">
       <br>
     </div>
     <div id="slowedByContainer">
-      <label for="slowedByLevel" title="Slows Target % in PvP" class="hoverable">Slowed By:</label>
+      <label for="slowedByLevel" title="Slows Target % in PvP" class="hoverable">被緩速（Slowed By）：</label>
       <input type="number" id="slowedByLevel" value="0" min="0" max="50">
       <br>
     </div>
     <div id="decrepifyContainer">
-      <input type="checkbox" id="decrepify">Decrepify
+      <input type="checkbox" id="decrepify">衰老詛咒（Decrepify）
       <br>
     </div>
     <div id="chilledContainer">
-      <input type="checkbox" id="chilled">Chilled
+      <input type="checkbox" id="chilled">冰冷狀態（Chilled）
       <br>
     </div>
-    <button type="button" id="generateLink">Copy Link</button>
+    <button type="button" id="generateLink">複製連結</button>
   </div>
   <div id="tableContainer" class="halfWindow"></div>
 </body>
 </html>
+
